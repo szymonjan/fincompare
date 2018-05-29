@@ -228,7 +228,7 @@ function filter_table(elem) {
     not_found_message.hidden = !all_rows_hidden;
 }
 </script>
-    <p>Report generated on 27-Apr-2018 at 14:14:02 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.16.0</p>
+    <p>Report generated on 29-May-2018 at 10:40:23 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.16.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -239,7 +239,7 @@ function filter_table(elem) {
         <td>{&apos;pytest&apos;: &apos;3.2.3&apos;, &apos;py&apos;: &apos;1.5.3&apos;, &apos;pluggy&apos;: &apos;0.4.0&apos;}</td></tr>
       <tr>
         <td>Platform</td>
-        <td>Darwin-17.4.0-x86_64-i386-64bit</td></tr>
+        <td>Darwin-17.5.0-x86_64-i386-64bit</td></tr>
       <tr>
         <td>Plugins</td>
         <td>{&apos;metadata&apos;: &apos;1.7.0&apos;, &apos;html&apos;: &apos;1.16.0&apos;}</td></tr>
@@ -247,8 +247,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.6.5</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 19.09 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>1 tests ran in 12.79 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -259,12 +259,13 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="failed results-table-row">
+      <tbody class="passed results-table-row">
         <tr>
-          <td class="col-result">Failed</td>
-          <td class="col-name">tests/testcases/twitter_tests.py::TwitterTests::test_sending_tweet</td>
-          <td class="col-duration">18.75</td>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/testcases/simple_tests.py::BaseTests::test_initial_request</td>
+          <td class="col-duration">12.53</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;tests.testcases.twitter_tests.TwitterTests testMethod=test_sending_tweet&gt;<br/><br/>    def setUp(self):<br/>        self.driver = WTF_WEBDRIVER_MANAGER.new_driver()<br/>&gt;       self.driver.get(url_address())<br/><br/>tests/testcases/twitter_tests.py:20: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>tests/testdata/settings.py:27: in url_address<br/>    return WTF_CONFIG_READER.get(&#x27;test_data.url&#x27;)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;wtframework.wtf.config.ConfigReader object at 0x1053e24a8&gt;, key = &#x27;test_data.url&#x27;, default_value = &lt;class &#x27;wtframework.wtf.config.ConfigReader.__NoDefaultSpecified__&#x27;&gt;<br/><br/>    def get(self, key, default_value=__NoDefaultSpecified__):<br/>        &#x27;&#x27;&#x27;<br/>            Gets the value from the yaml config based on the key.<br/>    <br/>            No type casting is performed, any type casting should be<br/>            performed by the caller.<br/>    <br/>            Args:<br/>                key (str) - Config setting key.<br/>    <br/>            Kwargs:<br/>                default_value - Default value to return if config is not specified.<br/>    <br/>            Returns:<br/>                Returns value stored in config file.<br/>    <br/>            &#x27;&#x27;&#x27;<br/>        # First attempt to get the var from OS enviornment.<br/>        os_env_string = ConfigReader.ENV_PREFIX + key<br/>        os_env_string = os_env_string.replace(&quot;.&quot;, &quot;_&quot;)<br/>        if os.getenv(os_env_string) != None:<br/>            return os.getenv(os_env_string)<br/>    <br/>        # Otherwise search through config files.<br/>        for data_map in self._dataMaps:<br/>            try:<br/>                if &quot;.&quot; in key:<br/>                    # this is a multi levl string<br/>                    namespaces = key.split(&quot;.&quot;)<br/>                    temp_var = data_map<br/>                    for name in namespaces:<br/>                        temp_var = temp_var[name]<br/>                    return temp_var<br/>                else:<br/>                    value = data_map[key]<br/>                    return value<br/>            except (AttributeError, TypeError, KeyError):<br/>                pass<br/>    <br/>        if default_value == self.__NoDefaultSpecified__:<br/>&gt;           raise KeyError(u(&quot;Key &#x27;{0}&#x27; does not exist&quot;).format(key))<br/><span class="error">E           KeyError: &quot;Key &#x27;test_data.url&#x27; does not exist&quot;</span><br/><br/>../venv/lib/python3.6/site-packages/wtframework/wtf/config.py:125: KeyError<br/></div></td></tr></tbody></table></body></html>
+            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>close_driver() takes 1 positional argument but 2 were given
+</div></td></tr></tbody></table></body></html>

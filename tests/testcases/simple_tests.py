@@ -3,23 +3,25 @@
 from wtframework.wtf.testobjects.basetests import WTFBaseTest
 from wtframework.wtf.web.webdriver import WTF_WEBDRIVER_MANAGER
 from wtframework.wtf.utils.test_utils import do_and_ignore
-from wtframework.wtf.utils.wait_utils import do_until
 
 
-from random import randint
 import unittest
-
+from tests.testdata.settings import url, url_with_credentials
+from tests.pages.request_page import HomePage
+from time import sleep
 
 class BaseTests(WTFBaseTest):
 
     def setUp(self):
-        pass
+        self.driver = WTF_WEBDRIVER_MANAGER.new_driver()
+        self.driver.get(url_with_credentials())
+        self.driver.get(url())
 
     def tearDown(self):
-        pass
+        do_and_ignore(lambda: WTF_WEBDRIVER_MANAGER.close_driver(self.driver))
 
-    def test_sending_tweet(self):
-        pass
+    def test_initial_request(self):
+        HomePage(self.driver).submit_request()
 
 
 if __name__ == '__main__':

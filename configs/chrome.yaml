@@ -32,7 +32,7 @@ selenium:
 
   # Required if browser is set to CHROME or FIREFOX.  This should point to the chrome driver path
   # relative to root '/'.
-  chromedriver_path: assets/chromedriver.exe
+  chromedriver_path: assets/chromedriver
   #firefox_driver: C:/Users/szymonj/virtualenv_frontend/Lib/site-packages/geckodriver.exe
 
   # Path of Selenium server Jar file.  This is needed for Safari Driver.
@@ -74,14 +74,6 @@ web_app:
   #InsysGO stage
   url: http://ipott:ipotttest@www-ipott.stage.insysdev.pl/
 
-login_data:
-  #User with with highest package available
-  vip_login: pakietvip
-  vip_password: demo123
-
-  #User with lower package
-  demo_login: pakietdemo
-  demo_password: demo123
 
 # Default wait timeout settings. Timeout settings are specified in seconds.
 timeout:

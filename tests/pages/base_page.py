@@ -1,5 +1,7 @@
 import time
 import datetime
+import random
+import string
 
 from wtframework.wtf.config import WTF_TIMEOUT_MANAGER
 from wtframework.wtf.web.page import PageObject
@@ -27,7 +29,7 @@ class BasePage(PageObject):
             return WebDriverWait(self.webdriver, WTF_TIMEOUT_MANAGER.SHORT).until(
                 EC.visibility_of_element_located((By.XPATH, xpath)))
         except TimeoutException:
-            msg = "Element located in: '{0}' wasn't found!".format(xpath)
+            msg = "No element located by XPATH - '{0}'".format(xpath)
             raise TimeoutException(msg)
 
     def find_clickable_element(self, xpath):
@@ -37,12 +39,11 @@ class BasePage(PageObject):
             return WebDriverWait(self.webdriver, WTF_TIMEOUT_MANAGER.SHORT).until(
                 EC.element_to_be_clickable((By.XPATH, xpath)))
         except TimeoutException:
-            msg = "Element located in: '{0}' wasn't found!".format(xpath)
+            msg = "No element located by XPATH - '{0}'".format(xpath)
             raise TimeoutException(msg)
 
     def select_hidden_element(self, visible_xpath, hidden_xpath):
         """Use this methods to select hidden elements """
-
         action = ActionChains(self.webdriver)
         # First hooover over an element
         action.move_to_element(self.find_visible_element(visible_xpath))
@@ -50,14 +51,24 @@ class BasePage(PageObject):
         action.click(self.find_visible_element(hidden_xpath))
         action.perform()
 
+    def select_random_dropdown_element(self, dropdown, list_of_elements):
+        """Use this methods to select hidden elements """
+        action = ActionChains(self.webdriver)
+        action.click(dropdown)
+        action.click(self.get_random_element_from_list(list_of_elements))
+        action.perform()
+
     def find_list_of_elements(self, xpath):
         """ Use this method to locate list of elements """
-
         # Wait for an element to show
-        self.find_clickable_element(xpath)
+        #self.find_clickable_element(xpath)
 
         # Then return a list of elements
         return self.webdriver.find_elements(By.XPATH, xpath)
+
+    def get_random_element_from_list(self, list_of_elements):
+        """FInd a list of elements and then click on one of them"""
+        return random.choice(list_of_elements)
 
     def get_element_from_list(self, xpath, n):
         """ This method returns text from element from a list"""
@@ -80,3 +91,8 @@ class BasePage(PageObject):
     def get_current_date():
         """ Returns current date in format 'DD.MM'"""
         return datetime.date.today().strftime("%d.%m")
+
+    @staticmethod
+    def get_random_string():
+        """Returns a random string with 6 letters"""
+        return ''.join(random.choice(string.ascii_uppercase + string.digits) for s in range(6))

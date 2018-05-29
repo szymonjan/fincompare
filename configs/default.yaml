@@ -39,7 +39,7 @@ selenium:
 
   # Desired capabilities to pass to Selenium Grid.
   # Required if using selenium Grid.
-  # desired_capabilities:
+  desired_capabilities:
     # Target browser version.
     #version: 22
 
@@ -71,10 +71,8 @@ selenium:
 
 test_data:
   #InsysGO stage
-  url: https://twitter.com/
-  #User with lower package
-  login: usertest1@interia.pl
-  password: qwer1234
+  url_with_credentials: https://finstaging:letssolvesmeproblems@sfjnjqcctu.stg.absatzfinanzierung24.de/
+  url: https://sfjnjqcctu.stg.absatzfinanzierung24.de/
 
 # Default wait timeout settings. Timeout settings are specified in seconds.
 timeout:
@@ -89,5 +87,7 @@ timeout:
   # Timeout for something extremely long, which a user would normally get 
   # up and take a break.  For example, transcoding an uploaded movie.
   epic: 60
+
+debug: true
 
 

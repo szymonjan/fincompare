@@ -22,9 +22,12 @@ from wtframework.wtf.config import WTF_CONFIG_READER
 # 'admin_user' and 'admin_password'
 
 
-def url_address():
+def url():
     "Application under test URL"
     return WTF_CONFIG_READER.get('test_data.url')
+
+def url_with_credentials():
+    return WTF_CONFIG_READER.get('test_data.url_with_credentials')
 
 def login():
     "Correct login"
