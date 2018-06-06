@@ -228,7 +228,7 @@ function filter_table(elem) {
     not_found_message.hidden = !all_rows_hidden;
 }
 </script>
-    <p>Report generated on 29-May-2018 at 10:40:23 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.16.0</p>
+    <p>Report generated on 05-Jun-2018 at 09:37:09 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.16.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -247,8 +247,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.6.5</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 12.79 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>1 tests ran in 15.63 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -259,13 +259,14 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="passed results-table-row">
+      <tbody class="failed results-table-row">
         <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/testcases/simple_tests.py::BaseTests::test_initial_request</td>
-          <td class="col-duration">12.53</td>
+          <td class="col-result">Failed</td>
+          <td class="col-name">tests/testcases/simple_tests.py::BaseTests::test_valid_request</td>
+          <td class="col-duration">15.30</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">----------------------------- Captured stdout call -----------------------------<br/>close_driver() takes 1 positional argument but 2 were given
+            <div class="log">self = &lt;tests.testcases.simple_tests.BaseTests testMethod=test_valid_request&gt;<br/><br/>    def test_valid_request(self):<br/>        HomePage(self.driver).submit_request()<br/>        company_search_page = CompanySearchPage(self.driver)<br/>        self.assertIn(&quot;An welches Unternehmen&quot;, company_search_page.get_form_title())<br/>    <br/>        company_search_page.search_company(&quot;Fincompare&quot;)<br/>        CompanySearchPage(self.driver).select_company()<br/>    <br/>        contact_form_page = ContactFormPage(self.driver)<br/>        self.assertIn(&quot;geben Sie die Kontaktdaten&quot;, contact_form_page.get_form_title())<br/>    <br/>        ContactFormPage(self.driver).submit_contact_data()<br/>    <br/>        request_result_page = RequestResultsPage(self.driver)<br/>        self.assertIn(&quot;passende Anbieter&quot;, request_result_page.get_table_title())<br/>    <br/>        request_result_page.select_random_offer()<br/>&gt;       sleep(3)<br/><span class="error">E       NameError: name &#x27;sleep&#x27; is not defined</span><br/><br/>tests/testcases/simple_tests.py:38: NameError<br/>----------------------------- Captured stdout call -----------------------------<br/>close_driver() takes 1 positional argument but 2 were given
+----------------------------- Captured stderr call -----------------------------<br/>WARNING:wtframework:Unable to take screenshot. Reason: expected bytes-like object, not str
 </div></td></tr></tbody></table></body></html>

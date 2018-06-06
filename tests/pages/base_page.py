@@ -15,8 +15,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage(PageObject):
-    """
-    This is a Base Page class that combines custom methods for builiding Page Objects. Every Page Object class
+    """ This is a Base Page class that combines custom methods for building Page Objects. Every Page Object class
     inherits from Base Page
     """
 
@@ -34,12 +33,20 @@ class BasePage(PageObject):
 
     def find_clickable_element(self, xpath):
         """Use this method to locate elements that are not clickable instantly"""
-
         try:
             return WebDriverWait(self.webdriver, WTF_TIMEOUT_MANAGER.SHORT).until(
                 EC.element_to_be_clickable((By.XPATH, xpath)))
         except TimeoutException:
             msg = "No element located by XPATH - '{0}'".format(xpath)
+            raise TimeoutException(msg)
+
+    def find_list_of_elements(self, xpath):
+        """ Use this method to get list of elements """
+        try:
+            return WebDriverWait(self.webdriver, WTF_TIMEOUT_MANAGER.SHORT).until(
+                EC.presence_of_all_elements_located((By.XPATH, xpath)))
+        except TimeoutException:
+            msg = "No elements located by XPATH - '{0}'".format(xpath)
             raise TimeoutException(msg)
 
     def select_hidden_element(self, visible_xpath, hidden_xpath):
@@ -51,20 +58,18 @@ class BasePage(PageObject):
         action.click(self.find_visible_element(hidden_xpath))
         action.perform()
 
-    def select_random_dropdown_element(self, dropdown, list_of_elements):
-        """Use this methods to select hidden elements """
+    def select_random_dropdown_element(self, dropdown_xpath, elements_xpath):
+        """Use this methods to select random items from dropdown"""
         action = ActionChains(self.webdriver)
-        action.click(dropdown)
-        action.click(self.get_random_element_from_list(list_of_elements))
+        action.click(self.find_clickable_element(dropdown_xpath))
+        action.pause(WTF_TIMEOUT_MANAGER.BRIEF)
+        action.click(self.get_random_element_from_list(self.find_list_of_elements(elements_xpath)))
         action.perform()
 
-    def find_list_of_elements(self, xpath):
-        """ Use this method to locate list of elements """
-        # Wait for an element to show
-        #self.find_clickable_element(xpath)
-
-        # Then return a list of elements
-        return self.webdriver.find_elements(By.XPATH, xpath)
+    def select_random_element_from_list(self, xpath):
+        """Use this method to find a list of elements and select one at random"""
+        element = self.get_random_element_from_list(self.find_list_of_elements(xpath))
+        element.click()
 
     def get_random_element_from_list(self, list_of_elements):
         """FInd a list of elements and then click on one of them"""
@@ -96,3 +101,8 @@ class BasePage(PageObject):
     def get_random_string():
         """Returns a random string with 6 letters"""
         return ''.join(random.choice(string.ascii_uppercase + string.digits) for s in range(6))
+
+    @staticmethod
+    def get_random_number():
+        """Returns a random 5-digit number"""
+        return random.randint(10000, 50000)
