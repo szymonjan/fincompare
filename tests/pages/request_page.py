@@ -120,3 +120,32 @@ class RequestResultsPage(BasePage):
 
     def select_random_offer(self):
         self.select_random_element_from_list(self.OFFERS)
+
+    def upload_documet(self):
+        self.webdriver.execute_script("handleUploadDocument()")
+
+class DocumentsPage(BasePage):
+
+    """On documents page user can see summary of the selected offer, list of documents,
+     and if he didn't confirm his email notifiaction massage about that"""
+
+    PAGE_TITLE = "//h2[contains(text(),'Ihre Anfrage')]"
+    NOTIFICATION = "//div[contains(@class, 'Notification')]"
+    DOCUMENTS_LIST = "//button[contains(@class, 'uploadButton')]"
+
+    def __init__(self, driver):
+        super().__init__(driver)
+
+        self.page_title = self.find_visible_element(self.PAGE_TITLE)
+        self.documents_list = self.find_list_of_elements(self.DOCUMENTS_LIST)
+
+    def get_page_title(self):
+        return self.page_title.text
+
+    def upload_documents(self, file):
+        for self.document in self.documents_list:
+            self.document.drop_files(file)
+
+
+if __name__=='__main__':
+    pass

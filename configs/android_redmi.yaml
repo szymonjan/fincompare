@@ -32,7 +32,7 @@ selenium:
 
   # Required if browser is set to CHROME or FIREFOX.  This should point to the chrome driver path
   # relative to root '/'.
-  chromedriver_path: assets/chromedriver_mobile
+  # chromedriver_path: assets/chromedriver.exe
   # Path of Selenium server Jar file.  This is needed for Safari Driver.
   #selenium_server_path: /path/to/selenium-server-standalone-2.37.0.jar
 
@@ -49,11 +49,11 @@ selenium:
 
     platformVersion: 6.0
 
-    deviceName: emulator-5554
+    deviceName: device
 
     browserName: Chrome
 
-    # app: /Users/sjankowski/Work/Appium_PoC/mobile_tests/assets/app-stagingFtsTest-release-bitrise-signed.apk
+    #capp: /Users/sjankowski/Work/Appium_PoC/mobile_tests/assets/app-stagingFtsTest-release-bitrise-signed.apk
     
   # Terminate Selenium after all tests have run. Disabling this can be helpful
   # during debugging.  In operation you normally want to keep this to clean up 
@@ -78,9 +78,9 @@ selenium:
   # Default is False
   #threaded: true
 
-test_data:
+web_app:
   #InsysGO stage
-  url_with_credentials: https://finstaging:letssolvesmeproblems@sfzzggiqsp.stg.absatzfinanzierung24.de/
+  url: http://ipott:ipotttest@www-ipott.stage.insysdev.pl/
 
 login_data:
   #User with with highest package available

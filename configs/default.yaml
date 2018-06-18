@@ -71,8 +71,8 @@ selenium:
 
 test_data:
   #InsysGO stage
-  url_with_credentials: https://finstaging:letssolvesmeproblems@sfjnjqcctu.stg.absatzfinanzierung24.de/
-  url: https://sfjnjqcctu.stg.absatzfinanzierung24.de/
+  url_with_credentials: https://finstaging:letssolvesmeproblems@sfzzggiqsp.stg.absatzfinanzierung24.de/
+  url: https://sfzzggiqsp.stg.absatzfinanzierung24.de/
 
 # Default wait timeout settings. Timeout settings are specified in seconds.
 timeout:
@@ -87,7 +87,5 @@ timeout:
   # Timeout for something extremely long, which a user would normally get 
   # up and take a break.  For example, transcoding an uploaded movie.
   epic: 60
-
-debug: true
 
 

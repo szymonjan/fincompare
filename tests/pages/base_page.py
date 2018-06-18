@@ -2,6 +2,7 @@ import time
 import datetime
 import random
 import string
+import os.path
 
 from wtframework.wtf.config import WTF_TIMEOUT_MANAGER
 from wtframework.wtf.web.page import PageObject
@@ -12,6 +13,7 @@ from selenium.webdriver.common.alert import Alert
 from selenium.common.exceptions import TimeoutException, NoAlertPresentException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.remote.webelement import WebElement
 
 
 class BasePage(PageObject):
@@ -106,3 +108,24 @@ class BasePage(PageObject):
     def get_random_number():
         """Returns a random 5-digit number"""
         return random.randint(10000, 50000)
+
+    # Method from: https://gist.github.com/florentbr/349b1ab024ca9f3de56e6bf8af2ac69e
+    def drop_files(self, files, offsetX=0, offsetY=0):
+        JS_DROP_FILES = "var c=arguments,b=c[0],k=c[1];c=c[2];for(var d=b.ownerDocument||document,l=0;;){var e=b.getBoundingClientRect(),g=e.left+(k||e.width/2),h=e.top+(c||e.height/2),f=d.elementFromPoint(g,h);if(f&&b.contains(f))break;if(1<++l)throw b=Error('Element not interactable'),b.code=15,b;b.scrollIntoView({behavior:'instant',block:'center',inline:'center'})}var a=d.createElement('INPUT');a.setAttribute('type','file');a.setAttribute('multiple','');a.setAttribute('style','position:fixed;z-index:2147483647;left:0;top:0;');a.onchange=function(b){a.parentElement.removeChild(a);b.stopPropagation();var c={constructor:DataTransfer,effectAllowed:'all',dropEffect:'none',types:['Files'],files:a.files,setData:function(){},getData:function(){},clearData:function(){},setDragImage:function(){}};window.DataTransferItemList&&(c.items=Object.setPrototypeOf(Array.prototype.map.call(a.files,function(a){return{constructor:DataTransferItem,kind:'file',type:a.type,getAsFile:function(){return a},getAsString:function(b){var c=new FileReader;c.onload=function(a){b(a.target.result)};c.readAsText(a)}}}),{constructor:DataTransferItemList,add:function(){},clear:function(){},remove:function(){}}));['dragenter','dragover','drop'].forEach(function(a){var b=d.createEvent('DragEvent');b.initMouseEvent(a,!0,!0,d.defaultView,0,0,0,g,h,!1,!1,!1,!1,0,null);Object.setPrototypeOf(b,null);b.dataTransfer=c;Object.setPrototypeOf(b,DragEvent.prototype);f.dispatchEvent(b)})};d.documentElement.appendChild(a);a.getBoundingClientRect();return a;"
+        driver = self.parent
+        isLocal = not driver._is_remote or '127.0.0.1' in driver.command_executor._url
+        paths = []
+
+        # ensure files are present, and upload to the remote server if session is remote
+        for file in (files if isinstance(files, list) else [files]):
+            if not os.path.isfile(file):
+                raise FileNotFoundError(file)
+            paths.append(file if isLocal else self._upload(file))
+
+        value = '\n'.join(paths)
+        elm_input = driver.execute_script(JS_DROP_FILES, self, offsetX, offsetY)
+        elm_input._execute('sendKeysToElement', {'value': [value], 'text': value})
+
+    WebElement.drop_files = drop_files
+
+
