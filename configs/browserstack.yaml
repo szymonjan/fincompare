@@ -28,7 +28,7 @@ selenium:
   # ANDROID, CHROME, FIREFOX, HTMLUNIT, HTMLUNITWITHJS, 
   # INTERNETEXPLORER, IPAD, IPHONE, OPERA, SAFARI
   # OTHER - use other for non-browser tests like Appium
-  browser: CHROME
+  browser: INTERNETEXPLORER
 
   # Required if browser is set to CHROME o FIREFOX.  This should point to the chrome driver path
   # relative to root '/'.
@@ -43,8 +43,8 @@ selenium:
     # Desired capabilities to test on IE11
     os: Windows
     os_version: 10
-    browser: Chrome
-    browser_version: 66
+    browser: IE
+    browser_version: 11.0
     brosertack.local: false
     browserstack.selenium_version: 3.5.2
 
@@ -72,9 +72,6 @@ selenium:
   # Default is False
   #threaded: true
 
-test_data:
-  #InsysGO stage
-  url_with_credentials: https://finstaging:letssolvesmeproblems@sfzzggiqsp.stg.absatzfinanzierung24.de/
 
 # Default wait timeout settings. Timeout settings are specified in seconds.
 timeout:

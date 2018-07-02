@@ -77,7 +77,6 @@ class ContactFormPage(BasePage):
     FIRST_NAME = "//input[@id='company-search-firstName']"
     LAST_NAME = "//input[@id='company-search-lastName']"
     EMAIL = "//input[@id='company-search-email']"
-    PRIVACY_POLICY = "//div[@class='c-checkbox__wrapper']"
     SUBMIT_BUTTON = "//button[@type='submit']"
 
     def __init__(self, driver):
@@ -87,7 +86,6 @@ class ContactFormPage(BasePage):
         self.first_name = self.find_clickable_element(self.FIRST_NAME)
         self.last_name = self.find_clickable_element(self.LAST_NAME)
         self.email = self.find_clickable_element(self.EMAIL)
-        self.privacy_policy = self.find_visible_element(self.PRIVACY_POLICY)
         self.submit_button = self.find_visible_element(self.SUBMIT_BUTTON)
 
     def get_form_title(self):
@@ -98,7 +96,6 @@ class ContactFormPage(BasePage):
         self.first_name.send_keys("Test")
         self.last_name.send_keys("User")
         self.email.send_keys("{0}@exmaple.com".format(self.get_random_string()))
-        self.privacy_policy.click()
         self.submit_button.click()
 
 
@@ -121,8 +118,6 @@ class RequestResultsPage(BasePage):
     def select_random_offer(self):
         self.select_random_element_from_list(self.OFFERS)
 
-    def upload_documet(self):
-        self.webdriver.execute_script("handleUploadDocument()")
 
 class DocumentsPage(BasePage):
 
