@@ -6,7 +6,6 @@ import string
 import os.path
 
 from wtframework.wtf.config import WTF_TIMEOUT_MANAGER
-from wtframework.wtf.web.page import PageObject
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
@@ -17,13 +16,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webelement import WebElement
 
 
-class BasePage(PageObject):
+class BasePage:
     """ This is a Base Page class that combines custom methods for building Page Objects. Every Page Object class
     inherits from Base Page
     """
 
     def __init__(self, webdriver, *args, **kwargs):
-        super(BasePage, self).__init__(webdriver, *args, **kwargs)
+        self.webdriver = webdriver
 
     def find_visible_element(self, xpath):
         """Use this method to locate elements that are not visible instantly"""

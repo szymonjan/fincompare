@@ -69,10 +69,6 @@ selenium:
   # Default is False
   #threaded: true
 
-test_data:
-  #InsysGO stage
-  url_with_credentials: https://finstaging:letssolvesmeproblems@sfzzggiqsp.stg.absatzfinanzierung24.de/
-  url: https://sfzzggiqsp.stg.absatzfinanzierung24.de/
 
 # Default wait timeout settings. Timeout settings are specified in seconds.
 timeout:

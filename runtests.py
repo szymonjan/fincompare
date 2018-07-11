@@ -51,3 +51,4 @@ if __name__ == '__main__':
     test_path = os.path.join("tests", "testcases", "simple_tests.py") + os.sep
     os.system("pytest {test_path} --html={result_path}"
               .format(result_path=result_path, test_path=test_path))
+
