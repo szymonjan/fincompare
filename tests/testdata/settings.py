@@ -21,8 +21,8 @@ from wtframework.wtf.config import WTF_CONFIG_READER
 # you can simply pass in a config file that'll specify the value for
 # 'admin_user' and 'admin_password'
 
-LOGIN = 'finstaging'
-PASSWORD = 'letssolvesmeproblems'
+LOGIN = ''
+PASSWORD = ''
 
 def url_with_credentials():
     "URL with credentials is used to open sites secured by basic auth"
